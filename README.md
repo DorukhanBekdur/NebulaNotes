@@ -15,6 +15,12 @@ NebulaNotes is a modern, user-friendly note-taking application that leverages cu
 - [Styling](#styling)
 - [Contact](#contact)
 
+<img width="756" alt="Screenshots2" src="https://github.com/user-attachments/assets/70385e77-2360-4e24-8d61-b9140fa0c721" />
+
+<img width="756" alt="Screenshots1" src="https://github.com/user-attachments/assets/30d3f966-4125-4445-b6d5-05e70ba7402f" />
+
+<img width="756" alt="Screenshot3" src="https://github.com/user-attachments/assets/551ab778-ed5c-4a55-890e-e40c5275162f" />
+
 ## Introduction
 
 NebulaNotes is a single-page application (SPA) built with React that allows you to manage your notes effortlessly. Whether you need to quickly jot down an idea or manage detailed information, NebulaNotes offers a robust set of tools to make note-taking a breeze.
