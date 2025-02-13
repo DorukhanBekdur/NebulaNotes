@@ -7,21 +7,24 @@ function NotePage() {
   const navigate = useNavigate();
   const { notes, addNote, updateNote } = useNoteStore();
   
-  const existingNote = notes.find((n) => n.id === parseInt(id));
+  const isNewNote = id === "new";
+  const existingNote = !isNewNote ? notes.find((n) => n.id === parseInt(id)) : null;
   const [content, setContent] = useState(existingNote ? existingNote.content : "");
 
   const handleSave = () => {
-    if (existingNote) {
-      updateNote(existingNote.id, content);
-    } else {
+    if (isNewNote) {
       addNote({ content });
+    } else {
+      updateNote(existingNote.id, content);
     }
     navigate("/");
   };
 
   return (
     <div className="p-6 bg-gray-900 text-white rounded-lg shadow-lg">
-      <h1 className="text-3xl font-semibold text-primary">✏️ Edit Note</h1>
+      <h1 className="text-3xl font-semibold text-primary">
+        {isNewNote ? "New Note" : "✏️ Edit Note"}
+      </h1>
       <textarea 
         className="w-full h-40 p-3 border rounded-lg mt-4 shadow-sm bg-gray-800 text-white" 
         placeholder="Write your note here..."
