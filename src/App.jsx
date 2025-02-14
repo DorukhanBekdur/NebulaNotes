@@ -7,8 +7,8 @@ import ProtectedRoute from "./pages/ProtectedRoute";
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center p-4">
-      <div className="w-full max-w-4xl bg-gray-800 rounded-xl shadow-2xl overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center bg-gray-900 p-6">
+      <div className="w-full max-w-4xl bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

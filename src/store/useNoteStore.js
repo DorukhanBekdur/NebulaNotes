@@ -1,50 +1,42 @@
 import { create } from "zustand";
 
-const useNoteStore = create((set) => ({
+const useNoteStore = create((set, get) => ({
   notes: [],
-
-  addNote: (note) =>
-    set((state) => ({
-      notes: [
-        ...state.notes,
-        {
-          id: Date.now(),
-          pinned: false,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-          image: note.image || null,
-          ...note,
-        },
-      ],
-    })),
-
-  deleteNote: (id) =>
-    set((state) => ({
-      notes: state.notes.filter((note) => note.id !== id),
-    })),
-
-  updateNote: (id, updatedContent, updatedImage) =>
-    set((state) => ({
-      notes: state.notes.map((note) =>
+  addNote: (noteData) => {
+    const newNote = {
+      id: Date.now(),
+      content: noteData.content,
+      image: noteData.image || null,
+      folder: noteData.folder,
+      tags: noteData.tags,
+      attachments: noteData.attachments || [],
+      pinned: false,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
+    set({ notes: [...get().notes, newNote] });
+  },
+  updateNote: (id, updatedData) => {
+    set({
+      notes: get().notes.map((note) =>
         note.id === id
-          ? {
-              ...note,
-              content: updatedContent,
-              image: updatedImage,
-              updatedAt: new Date(),
-            }
+          ? { ...note, ...updatedData, updatedAt: new Date() }
           : note
       ),
-    })),
-
-  togglePin: (id) =>
-    set((state) => ({
-      notes: state.notes.map((note) =>
-        note.id === id ? { ...note, pinned: !note.pinned } : note
+    });
+  },
+  deleteNote: (id) => {
+    set({ notes: get().notes.filter((note) => note.id !== id) });
+  },
+  togglePin: (id) => {
+    set({
+      notes: get().notes.map((note) =>
+        note.id === id
+          ? { ...note, pinned: !note.pinned, updatedAt: new Date() }
+          : note
       ),
-    })),
-
-  reorderNotes: (newNotesOrder) => set({ notes: newNotesOrder }),
+    });
+  },
 }));
 
 export default useNoteStore;
