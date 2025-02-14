@@ -19,7 +19,7 @@ const Register = () => {
       <div className="bg-gray-800 text-white rounded-2xl shadow-md flex overflow-hidden w-full max-w-4xl">
         
         <div className="w-1/2 p-8 flex flex-col justify-center">
-          <h1 className="text-4xl font-bold text-center mb-4">NebulaNotes</h1>
+          <h1 className="text-4xl font-bold text-center mb-4">Nebula Notes</h1>
           <h2 className="text-xl text-gray-300 text-center mb-6">Create an Account</h2>
 
           <form onSubmit={handleRegister} className="space-y-4">
