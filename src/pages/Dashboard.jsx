@@ -3,7 +3,7 @@ import { useState } from "react";
 import useNoteStore from "../store/useNoteStore";
 import NoteCard from "./NoteCard";
 import logo from "../assets/logo.png";
-import mascot from "../assets/maskot.png";
+import emptyStateImage from "../assets/emptyPhoto.svg"; 
 
 function Dashboard() {
   const { notes, deleteNote, togglePin } = useNoteStore();
@@ -25,23 +25,36 @@ function Dashboard() {
   });
 
   const pinnedNotes = filteredNotes.filter((note) => note.pinned);
-  const unpinnedNotes = filteredNotes.filter((note) => !note.pinned);
+  const unpinnedNotes = filteredNotes.filter((note) => !pinnedNotes.includes(note));
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-6">
       <div className="max-w-4xl mx-auto">
-        <header className="flex flex-col sm:flex-row justify-between items-center bg-gradient-to-r from-gray-800 to-gray-900 p-4 rounded-lg shadow-lg mb-6 backdrop-blur-sm">
-          <div className="flex items-center mb-4 sm:mb-0">
-            <img src={logo} alt="NebulaNotes Logo" className="w-12 h-12 mr-3" />
-            <h1 className="text-4xl font-bold">NebulaNotes</h1>
+        <header className="sticky top-0 z-50 bg-gradient-to-r from-gray-800 to-gray-900 backdrop-blur-md shadow-lg rounded-xl p-4 mb-6 flex justify-between items-center">
+          <div className="flex items-center space-x-3">
+            <img src={logo} alt="NebulaNotes Logo" className="w-12 h-12" />
+            <h1 className="text-4xl font-extrabold text-white tracking-wide glow-text">
+              NebulaNotes
+            </h1>
           </div>
-          <Link
-            to="/note/new"
-            className="flex items-center font-semibold text-white rounded-md shadow-md bg-gradient-to-r from-gray-700 to-gray-800 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg px-4 py-2"
-            title="Create a new note"
-          >
-            <span className="mr-2">➕</span> New Note
-          </Link>
+
+          <div className="flex items-center space-x-2">
+            <button className="p-3 w-12 h-12 bg-gray-800 hover:bg-gray-700 transition shadow-md flex items-center justify-center rounded-md">
+              <span className="text-white text-xl">📂</span>
+            </button>
+            <button className="p-3 w-12 h-12 bg-gray-800 hover:bg-gray-700 transition shadow-md flex items-center justify-center rounded-md">
+              <span className="text-white text-xl">⭐</span>
+            </button>
+            <button className="p-3 w-12 h-12 bg-gray-800 hover:bg-gray-700 transition shadow-md flex items-center justify-center rounded-md">
+              <span className="text-white text-xl">⚙️</span>
+            </button>
+            <Link
+              to="/profile"
+              className="p-3 w-12 h-12 bg-gray-800 hover:bg-purple-600 transition shadow-md flex items-center justify-center rounded-md"
+            >
+              <span className="text-white text-xl">👤</span>
+            </Link>
+          </div>
         </header>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
@@ -69,26 +82,18 @@ function Dashboard() {
         </div>
 
         {notes.length === 0 ? (
-          <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center p-6">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl font-bold mb-4">No Notes Yet</h2>
-              <p className="text-lg mb-6">
-                You haven't created any notes. Click the button below to get
-                started!
-              </p>
-              <Link
-                to="/note/new"
-                className="px-6 py-3 bg-gradient-to-r from-gray-700 to-gray-800 rounded-md shadow-md text-white font-semibold hover:scale-105 transition transform"
-                title="Create a new note"
-              >
-                ➕ New Note
-              </Link>
-              <img
-                src={mascot}
-                alt="Mascot"
-                className="w-100 h-100 mx-auto opacity-80 mt-8"
-              />
-            </div>
+          <div className="min-h-[60vh] flex flex-col items-center justify-center text-white text-center">
+            <img src={emptyStateImage} alt="No Notes Yet" className="w-48 h-48 opacity-80 mb-6" />
+            <h2 className="text-3xl font-bold">Start Your Journey 🚀</h2>
+            <p className="text-lg text-gray-400 max-w-md mt-2 mb-6">
+              You don’t have any notes yet. Click the button below to create your first note and organize your thoughts!
+            </p>
+            <Link
+              to="/note/new"
+              className="px-6 py-3 text-lg font-semibold bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg shadow-md hover:scale-105 transition-transform"
+            >
+              ➕ Create a Note
+            </Link>
           </div>
         ) : (
           <>
