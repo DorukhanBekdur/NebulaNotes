@@ -15,11 +15,9 @@ NebulaNotes is a modern, user-friendly note-taking application that leverages cu
 - [Styling](#styling)
 - [Contact](#contact)
 
-<img width="756" alt="Screenshots2" src="https://github.com/user-attachments/assets/70385e77-2360-4e24-8d61-b9140fa0c721" />
+<img width="756" alt="NebulaLogin" src="https://github.com/user-attachments/assets/1e32e35b-3edc-48af-8a80-4cdc0c0eb4e1" />
 
-<img width="756" alt="Screenshots1" src="https://github.com/user-attachments/assets/30d3f966-4125-4445-b6d5-05e70ba7402f" />
-
-<img width="756" alt="Screenshot3" src="https://github.com/user-attachments/assets/551ab778-ed5c-4a55-890e-e40c5275162f" />
+<img width="756" alt="NebulaRegister" src="https://github.com/user-attachments/assets/ba66bfd8-4231-42ae-bc90-b9ec5a77a50a" />
 
 ## Introduction
 
