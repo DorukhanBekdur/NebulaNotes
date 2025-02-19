@@ -5,12 +5,18 @@ import RegisterPhoto from "../assets/NebulaRegister.jpg";
 
 const Register = () => {
   const navigate = useNavigate();
+
+  const { register } = useAuthStore();
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleRegister = (e) => {
     e.preventDefault();
+    
+    register(username, email, password);
+    
     navigate("/login");
   };
 

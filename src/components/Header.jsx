@@ -12,15 +12,24 @@ const Header = () => {
       </div>
 
       <div className="flex items-center space-x-2">
-        <button className="p-3 w-12 h-12 bg-gray-800 hover:bg-gray-700 transition shadow-md flex items-center justify-center rounded-md">
+        <Link
+          to="/folders"
+          className="p-3 w-12 h-12 bg-gray-800 hover:bg-gray-700 transition shadow-md flex items-center justify-center rounded-md"
+        >
           <span className="text-white text-xl">📂</span>
-        </button>
-        <button className="p-3 w-12 h-12 bg-gray-800 hover:bg-gray-700 transition shadow-md flex items-center justify-center rounded-md">
+        </Link>
+        <Link
+          to="/starred"
+          className="p-3 w-12 h-12 bg-gray-800 hover:bg-gray-700 transition shadow-md flex items-center justify-center rounded-md"
+        >
           <span className="text-white text-xl">⭐</span>
-        </button>
-        <button className="p-3 w-12 h-12 bg-gray-800 hover:bg-gray-700 transition shadow-md flex items-center justify-center rounded-md">
+        </Link>
+        <Link
+          to="/settings"
+          className="p-3 w-12 h-12 bg-gray-800 hover:bg-gray-700 transition shadow-md flex items-center justify-center rounded-md"
+        >
           <span className="text-white text-xl">⚙️</span>
-        </button>
+        </Link>
         <Link
           to="/profile"
           className="p-3 w-12 h-12 bg-gray-800 hover:bg-purple-600 transition shadow-md flex items-center justify-center rounded-md"

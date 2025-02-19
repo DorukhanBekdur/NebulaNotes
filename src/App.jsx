@@ -4,6 +4,10 @@ import NotePage from "./pages/NotePage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProtectedRoute from "./pages/ProtectedRoute";
+import Folders from "./pages/Folders";
+import Starred from "./pages/Starred";
+import Settings from "./pages/Settings";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -12,6 +16,38 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route
+            path="/folders"
+            element={
+              <ProtectedRoute>
+                <Folders />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/starred"
+            element={
+              <ProtectedRoute>
+                <Starred />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <ProtectedRoute>
+                <Settings />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/"
             element={
