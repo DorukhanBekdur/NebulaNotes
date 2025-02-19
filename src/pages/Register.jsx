@@ -16,6 +16,8 @@ const Register = () => {
     e.preventDefault();
     
     register(username, email, password);
+
+    console.log("Register user:", {username , email , password});
     
     navigate("/login");
   };

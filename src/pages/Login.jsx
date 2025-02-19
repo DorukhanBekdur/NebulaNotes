@@ -12,6 +12,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     login(username, password);
+    console.log("Logging in with:", {username, password});
     navigate("/");
   };
 

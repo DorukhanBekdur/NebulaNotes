@@ -1,30 +1,33 @@
 import { create } from "zustand";
 
 const useAuthStore = create((set) => ({
+  user: null,
   isAuthenticated: false,
 
+  register: (username, email, password) => {
+    console.log("Register function called with:", { username, email, password });
+    const newUser = { username, email, bio: "This is your profile bio." }; 
+    set({ user: newUser, isAuthenticated: true });
+  },
+
   login: (username, password) => {
-    if (username && password) {
-      set({ isAuthenticated: true });
-    }
+    console.log("Login function called with:", { username, password });
+    set((state) => ({
+      user: { ...state.user, username },
+      isAuthenticated: true,
+    }));
+  },
+  
+  updateBio: (newBio) => {
+    set((state) => ({
+      user: { ...state.user, bio: newBio },
+    }));
   },
 
-  register: (username, password) => {
-    if (username && password) {
-      set({ isAuthenticated: true });
-    }
+  logout: () => {
+    console.log("User logged out");
+    set({ user: null, isAuthenticated: false });
   },
-
-    user: null,
-    isAuthenticated: false,
-    login: (username, email, password) => {
-
-      const userData = { username, email };
-      set({ user: userData, isAuthenticated: true });
-    },
-    logout: () => set({ user: null, isAuthenticated: false }),
-
-  logout: () => set({user: null, isAuthenticated: false }),
 }));
 
 export default useAuthStore;
