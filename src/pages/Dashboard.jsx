@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import useNoteStore from "../store/useNoteStore";
 import Header from "../components/Header";
 import NoteFilters from "../components/NoteFilters";
@@ -18,7 +19,23 @@ function Dashboard() {
     <div className="min-h-screen bg-gray-900 text-white p-6">
       <Header />
       <NoteFilters {...{ searchQuery, setSearchQuery, folderFilter, setFolderFilter, tagFilter, setTagFilter }} />
-      {notes.length === 0 ? <NoNotes /> : <NotesList {...{ pinnedNotes, unpinnedNotes, deleteNote, togglePin }} />}
+
+      {notes.length === 0 ? (
+        <NoNotes />
+      ) : (
+        <>
+          <NotesList {...{ pinnedNotes, unpinnedNotes, deleteNote, togglePin }} />
+
+          <div className="fixed bottom-8 right-8">
+            <Link
+              to="/note/new"
+              className="px-6 py-3 text-lg font-semibold bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full shadow-lg hover:scale-105 transition-transform"
+            >
+              ➕ Create New Note
+            </Link>
+          </div>
+        </>
+      )}
     </div>
   );
 }
